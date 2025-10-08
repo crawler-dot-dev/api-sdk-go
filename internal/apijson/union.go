@@ -2,7 +2,7 @@ package apijson
 
 import (
 	"errors"
-	"github.com/stainless-sdks/crawler.dev-go/packages/param"
+	"github.com/crawler-dot-dev/api-sdk-go/packages/param"
 	"reflect"
 
 	"github.com/tidwall/gjson"

@@ -1,7 +1,7 @@
 package apijson
 
 import (
-	"github.com/stainless-sdks/crawler.dev-go/packages/respjson"
+	"github.com/crawler-dot-dev/api-sdk-go/packages/respjson"
 	"reflect"
 )
 

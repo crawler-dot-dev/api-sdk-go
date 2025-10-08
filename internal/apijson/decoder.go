@@ -7,7 +7,7 @@ package apijson
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/stainless-sdks/crawler.dev-go/packages/param"
+	"github.com/crawler-dot-dev/api-sdk-go/packages/param"
 	"reflect"
 	"strconv"
 	"sync"

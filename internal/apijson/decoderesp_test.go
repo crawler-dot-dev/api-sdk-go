@@ -2,8 +2,8 @@ package apijson_test
 
 import (
 	"encoding/json"
-	"github.com/stainless-sdks/crawler.dev-go/internal/apijson"
-	"github.com/stainless-sdks/crawler.dev-go/packages/respjson"
+	"github.com/crawler-dot-dev/api-sdk-go/internal/apijson"
+	"github.com/crawler-dot-dev/api-sdk-go/packages/respjson"
 	"testing"
 )
 

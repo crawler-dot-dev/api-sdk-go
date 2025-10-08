@@ -2,7 +2,7 @@ package param_test
 
 import (
 	"encoding/json"
-	"github.com/stainless-sdks/crawler.dev-go/packages/param"
+	"github.com/crawler-dot-dev/api-sdk-go/packages/param"
 	"testing"
 )
 
