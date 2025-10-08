@@ -1,8 +1,8 @@
 package sentinel_test
 
 import (
-	"github.com/stainless-sdks/crawler.dev-go/internal/encoding/json/sentinel"
-	"github.com/stainless-sdks/crawler.dev-go/packages/param"
+	"github.com/crawler-dot-dev/api-sdk-go/internal/encoding/json/sentinel"
+	"github.com/crawler-dot-dev/api-sdk-go/packages/param"
 	"reflect"
 	"slices"
 	"testing"

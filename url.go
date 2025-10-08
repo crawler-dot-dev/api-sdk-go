@@ -7,11 +7,11 @@ import (
 	"net/http"
 	"slices"
 
-	"github.com/stainless-sdks/crawler.dev-go/internal/apijson"
-	"github.com/stainless-sdks/crawler.dev-go/internal/requestconfig"
-	"github.com/stainless-sdks/crawler.dev-go/option"
-	"github.com/stainless-sdks/crawler.dev-go/packages/param"
-	"github.com/stainless-sdks/crawler.dev-go/packages/respjson"
+	"github.com/crawler-dot-dev/api-sdk-go/internal/apijson"
+	"github.com/crawler-dot-dev/api-sdk-go/internal/requestconfig"
+	"github.com/crawler-dot-dev/api-sdk-go/option"
+	"github.com/crawler-dot-dev/api-sdk-go/packages/param"
+	"github.com/crawler-dot-dev/api-sdk-go/packages/respjson"
 )
 
 // URLService contains methods and other services that help with interacting with
