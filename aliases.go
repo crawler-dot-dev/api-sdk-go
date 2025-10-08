@@ -3,8 +3,8 @@
 package crawlerdev
 
 import (
-	"github.com/stainless-sdks/crawler.dev-go/internal/apierror"
-	"github.com/stainless-sdks/crawler.dev-go/packages/param"
+	"github.com/crawler-dot-dev/api-sdk-go/internal/apierror"
+	"github.com/crawler-dot-dev/api-sdk-go/packages/param"
 )
 
 // aliased to make [param.APIUnion] private when embedding
