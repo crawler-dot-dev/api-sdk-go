@@ -29,9 +29,8 @@ func TestFileExtractTextWithOptionalParams(t *testing.T) {
 		option.WithAPIKey("My API Key"),
 	)
 	_, err := client.Files.ExtractText(context.TODO(), crawlerdev.FileExtractTextParams{
-		File:             io.Reader(bytes.NewBuffer([]byte("some file contents"))),
-		CleanText:        crawlerdev.Bool(true),
-		StripBoilerplate: crawlerdev.Bool(true),
+		File:      io.Reader(bytes.NewBuffer([]byte("some file contents"))),
+		CleanText: crawlerdev.Bool(true),
 	})
 	if err != nil {
 		var apierr *crawlerdev.Error

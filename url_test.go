@@ -27,10 +27,18 @@ func TestURLExtractTextWithOptionalParams(t *testing.T) {
 		option.WithAPIKey("My API Key"),
 	)
 	_, err := client.URLs.ExtractText(context.TODO(), crawlerdev.URLExtractTextParams{
-		URL:              "url",
-		CleanText:        crawlerdev.Bool(true),
-		RenderJs:         crawlerdev.Bool(true),
-		StripBoilerplate: crawlerdev.Bool(true),
+		URL:       "url",
+		CleanText: crawlerdev.Bool(true),
+		Headers: map[string]string{
+			"User-Agent":      "Custom Bot/1.0",
+			"X-API-Key":       "my-api-key",
+			"Accept-Language": "en-US",
+		},
+		Proxy: crawlerdev.URLExtractTextParamsProxy{
+			Password: crawlerdev.String("password"),
+			Server:   crawlerdev.String("server"),
+			Username: crawlerdev.String("username"),
+		},
 	})
 	if err != nil {
 		var apierr *crawlerdev.Error

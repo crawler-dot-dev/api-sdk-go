@@ -48,7 +48,6 @@ type URLExtractTextResponse struct {
 	FinalURL      string `json:"finalUrl"`
 	SizeBytes     int64  `json:"sizeBytes"`
 	StatusCode    int64  `json:"statusCode"`
-	Success       bool   `json:"success"`
 	TextLength    int64  `json:"textLength"`
 	URL           string `json:"url"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
@@ -58,7 +57,6 @@ type URLExtractTextResponse struct {
 		FinalURL      respjson.Field
 		SizeBytes     respjson.Field
 		StatusCode    respjson.Field
-		Success       respjson.Field
 		TextLength    respjson.Field
 		URL           respjson.Field
 		ExtraFields   map[string]respjson.Field
@@ -77,11 +75,10 @@ type URLExtractTextParams struct {
 	URL string `json:"url,required"`
 	// Whether to clean extracted text
 	CleanText param.Opt[bool] `json:"clean_text,omitzero"`
-	// Whether to render JavaScript for HTML content. This parameter is ignored for
-	// binary content types (PDF, DOC, etc.) since they are not HTML.
-	RenderJs param.Opt[bool] `json:"render_js,omitzero"`
-	// Whether to remove boilerplate text
-	StripBoilerplate param.Opt[bool] `json:"strip_boilerplate,omitzero"`
+	// Custom HTTP headers to send with the request (case-insensitive)
+	Headers map[string]string `json:"headers,omitzero"`
+	// Proxy configuration for the request
+	Proxy URLExtractTextParamsProxy `json:"proxy,omitzero"`
 	paramObj
 }
 
@@ -90,5 +87,25 @@ func (r URLExtractTextParams) MarshalJSON() (data []byte, err error) {
 	return param.MarshalObject(r, (*shadow)(&r))
 }
 func (r *URLExtractTextParams) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
+}
+
+// Proxy configuration for the request
+type URLExtractTextParamsProxy struct {
+	// Proxy password for authentication
+	Password param.Opt[string] `json:"password,omitzero"`
+	// Proxy server URL (e.g., http://proxy.example.com:8080 or
+	// socks5://proxy.example.com:1080)
+	Server param.Opt[string] `json:"server,omitzero"`
+	// Proxy username for authentication
+	Username param.Opt[string] `json:"username,omitzero"`
+	paramObj
+}
+
+func (r URLExtractTextParamsProxy) MarshalJSON() (data []byte, err error) {
+	type shadow URLExtractTextParamsProxy
+	return param.MarshalObject(r, (*shadow)(&r))
+}
+func (r *URLExtractTextParamsProxy) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
