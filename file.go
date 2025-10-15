@@ -51,7 +51,6 @@ type FileExtractTextResponse struct {
 	ExtractedText string `json:"extractedText"`
 	Filename      string `json:"filename"`
 	SizeBytes     int64  `json:"sizeBytes"`
-	Success       bool   `json:"success"`
 	TextLength    int64  `json:"textLength"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
@@ -59,7 +58,6 @@ type FileExtractTextResponse struct {
 		ExtractedText respjson.Field
 		Filename      respjson.Field
 		SizeBytes     respjson.Field
-		Success       respjson.Field
 		TextLength    respjson.Field
 		ExtraFields   map[string]respjson.Field
 		raw           string
@@ -77,8 +75,6 @@ type FileExtractTextParams struct {
 	File io.Reader `json:"file,omitzero,required" format:"binary"`
 	// Whether to clean the extracted text
 	CleanText param.Opt[bool] `json:"clean_text,omitzero"`
-	// Whether to remove boilerplate text
-	StripBoilerplate param.Opt[bool] `json:"strip_boilerplate,omitzero"`
 	paramObj
 }
 
