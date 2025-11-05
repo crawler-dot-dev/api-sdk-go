@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0 (2025-11-05)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/crawler-dot-dev/api-sdk-go/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* **api:** api update ([73da8fe](https://github.com/crawler-dot-dev/api-sdk-go/commit/73da8fe56392a782b6593503ad2a18fe9d0167ea))
+
 ## 0.2.0 (2025-11-05)
 
 Full Changelog: [v0.1.0...v0.2.0](https://github.com/crawler-dot-dev/api-sdk-go/compare/v0.1.0...v0.2.0)
