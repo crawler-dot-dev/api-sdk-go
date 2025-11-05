@@ -28,17 +28,22 @@ func TestURLExtractTextWithOptionalParams(t *testing.T) {
 	)
 	_, err := client.URLs.ExtractText(context.TODO(), crawlerdev.URLExtractTextParams{
 		URL:       "url",
+		CacheAge:  crawlerdev.Int(86400000),
 		CleanText: crawlerdev.Bool(true),
 		Headers: map[string]string{
 			"User-Agent":      "Custom Bot/1.0",
 			"X-API-Key":       "my-api-key",
 			"Accept-Language": "en-US",
 		},
+		MaxRedirects: crawlerdev.Int(5),
+		MaxSize:      crawlerdev.Int(10485760),
+		MaxTimeout:   crawlerdev.Int(15000),
 		Proxy: crawlerdev.URLExtractTextParamsProxy{
 			Password: crawlerdev.String("password"),
 			Server:   crawlerdev.String("server"),
 			Username: crawlerdev.String("username"),
 		},
+		StealthMode: crawlerdev.Bool(false),
 	})
 	if err != nil {
 		var apierr *crawlerdev.Error
