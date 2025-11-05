@@ -73,8 +73,27 @@ func (r *URLExtractTextResponse) UnmarshalJSON(data []byte) error {
 type URLExtractTextParams struct {
 	// The URL to extract text from.
 	URL string `json:"url,required"`
+	// Maximum cache time in milliseconds for the webpage. Must be between 0 (no
+	// caching) and 259200000 (3 days). Defaults to 172800000 (2 days) if not
+	// specified.
+	CacheAge param.Opt[int64] `json:"cache_age,omitzero"`
 	// Whether to clean extracted text
 	CleanText param.Opt[bool] `json:"clean_text,omitzero"`
+	// Maximum number of redirects to follow when fetching the URL. Must be between 0
+	// (no redirects) and 20. Defaults to 5 if not specified.
+	MaxRedirects param.Opt[int64] `json:"max_redirects,omitzero"`
+	// Maximum content length in bytes for the URL response. Must be between 1024 (1KB)
+	// and 52428800 (50MB). Defaults to 10485760 (10MB) if not specified.
+	MaxSize param.Opt[int64] `json:"max_size,omitzero"`
+	// Maximum time in milliseconds before the crawler gives up on loading a URL. Must
+	// be between 1000 (1 second) and 30000 (30 seconds). Defaults to 10000 (10
+	// seconds) if not specified.
+	MaxTimeout param.Opt[int64] `json:"max_timeout,omitzero"`
+	// When enabled, we use a proxy for the request. If set to true, and the 'proxy'
+	// option is set, it will be ignored. Defaults to false if not specified. Note:
+	// Enabling stealth_mode consumes an additional credit/quota point (2 credits total
+	// instead of 1) for this request.
+	StealthMode param.Opt[bool] `json:"stealth_mode,omitzero"`
 	// Custom HTTP headers to send with the request (case-insensitive)
 	Headers map[string]string `json:"headers,omitzero"`
 	// Proxy configuration for the request
