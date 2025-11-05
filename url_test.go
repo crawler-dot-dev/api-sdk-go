@@ -43,7 +43,7 @@ func TestURLExtractTextWithOptionalParams(t *testing.T) {
 			Server:   crawlerdev.String("server"),
 			Username: crawlerdev.String("username"),
 		},
-		StealthMode: crawlerdev.Bool(false),
+		StealthMode: crawlerdev.Bool(true),
 	})
 	if err != nil {
 		var apierr *crawlerdev.Error
