@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"net/http/httputil"
 
-	"github.com/stainless-sdks/api.crawler.dev-sdks-go/internal/apijson"
-	"github.com/stainless-sdks/api.crawler.dev-sdks-go/packages/respjson"
+	"github.com/crawler-dot-dev/api-sdk-go/internal/apijson"
+	"github.com/crawler-dot-dev/api-sdk-go/packages/respjson"
 )
 
 // Error represents an error that originates from the API, i.e. when a request is

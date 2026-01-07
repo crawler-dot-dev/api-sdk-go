@@ -1,4 +1,4 @@
-module github.com/stainless-sdks/api.crawler.dev-sdks-go
+module github.com/crawler-dot-dev/api-sdk-go
 
 go 1.22
 

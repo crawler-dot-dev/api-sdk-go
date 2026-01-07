@@ -18,10 +18,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/stainless-sdks/api.crawler.dev-sdks-go/internal"
-	"github.com/stainless-sdks/api.crawler.dev-sdks-go/internal/apierror"
-	"github.com/stainless-sdks/api.crawler.dev-sdks-go/internal/apiform"
-	"github.com/stainless-sdks/api.crawler.dev-sdks-go/internal/apiquery"
+	"github.com/crawler-dot-dev/api-sdk-go/internal"
+	"github.com/crawler-dot-dev/api-sdk-go/internal/apierror"
+	"github.com/crawler-dot-dev/api-sdk-go/internal/apiform"
+	"github.com/crawler-dot-dev/api-sdk-go/internal/apiquery"
 )
 
 func getDefaultHeaders() map[string]string {

@@ -2,7 +2,7 @@
 package json
 
 import (
-	"github.com/stainless-sdks/api.crawler.dev-sdks-go/internal/encoding/json/shims"
+	"github.com/crawler-dot-dev/api-sdk-go/internal/encoding/json/shims"
 	"reflect"
 	"time"
 )
