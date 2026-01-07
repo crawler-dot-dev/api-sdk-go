@@ -1,4 +1,4 @@
-package crawlerdev
+package apicrawlerdevsdks
 
 import (
 	"github.com/crawler-dot-dev/api-sdk-go/packages/param"

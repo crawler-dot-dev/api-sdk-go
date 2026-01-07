@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-package crawlerdev
+package apicrawlerdevsdks
 
 import (
 	"github.com/crawler-dot-dev/api-sdk-go/internal/apierror"
