@@ -41,7 +41,7 @@ To use a local version of this library from source in another project, edit the 
 directive. This can be done through the CLI with the following:
 
 ```sh
-$ go mod edit -replace github.com/crawler-dot-dev/api-sdk-go=/path/to/api-sdk-go
+$ go mod edit -replace github.com/stainless-sdks/api.crawler.dev-sdks-go=/path/to/api.crawler.dev-sdks-go
 ```
 
 ## Running tests

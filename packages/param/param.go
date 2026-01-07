@@ -2,7 +2,7 @@ package param
 
 import (
 	"encoding/json"
-	"github.com/crawler-dot-dev/api-sdk-go/internal/encoding/json/sentinel"
+	"github.com/stainless-sdks/api.crawler.dev-sdks-go/internal/encoding/json/sentinel"
 	"reflect"
 )
 

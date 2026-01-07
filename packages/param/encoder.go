@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	shimjson "github.com/crawler-dot-dev/api-sdk-go/internal/encoding/json"
+	shimjson "github.com/stainless-sdks/api.crawler.dev-sdks-go/internal/encoding/json"
 
 	"github.com/tidwall/sjson"
 )

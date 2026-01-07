@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-package crawlerdev
+package apicrawlerdevsdks
 
 import (
 	"context"
@@ -8,43 +8,41 @@ import (
 	"os"
 	"slices"
 
-	"github.com/crawler-dot-dev/api-sdk-go/internal/requestconfig"
-	"github.com/crawler-dot-dev/api-sdk-go/option"
+	"github.com/stainless-sdks/api.crawler.dev-sdks-go/internal/requestconfig"
+	"github.com/stainless-sdks/api.crawler.dev-sdks-go/option"
 )
 
 // Client creates a struct with services and top level methods that help with
-// interacting with the crawler.dev API. You should not instantiate this client
-// directly, and instead use the [NewClient] method instead.
+// interacting with the api.crawler.dev-sdks API. You should not instantiate this
+// client directly, and instead use the [NewClient] method instead.
 type Client struct {
 	Options []option.RequestOption
-	Files   FileService
-	URLs    URLService
+	Extract ExtractService
 }
 
-// DefaultClientOptions read from the environment (CRAWLER_DEV_API_KEY,
-// CRAWLER_DEV_BASE_URL). This should be used to initialize new clients.
+// DefaultClientOptions read from the environment (API_CRAWLER_DEV_SDKS_API_KEY,
+// API_CRAWLER_DEV_SDKS_BASE_URL). This should be used to initialize new clients.
 func DefaultClientOptions() []option.RequestOption {
 	defaults := []option.RequestOption{option.WithEnvironmentProduction()}
-	if o, ok := os.LookupEnv("CRAWLER_DEV_BASE_URL"); ok {
+	if o, ok := os.LookupEnv("API_CRAWLER_DEV_SDKS_BASE_URL"); ok {
 		defaults = append(defaults, option.WithBaseURL(o))
 	}
-	if o, ok := os.LookupEnv("CRAWLER_DEV_API_KEY"); ok {
+	if o, ok := os.LookupEnv("API_CRAWLER_DEV_SDKS_API_KEY"); ok {
 		defaults = append(defaults, option.WithAPIKey(o))
 	}
 	return defaults
 }
 
 // NewClient generates a new client with the default option read from the
-// environment (CRAWLER_DEV_API_KEY, CRAWLER_DEV_BASE_URL). The option passed in as
-// arguments are applied after these default arguments, and all option will be
-// passed down to the services and requests that this client makes.
+// environment (API_CRAWLER_DEV_SDKS_API_KEY, API_CRAWLER_DEV_SDKS_BASE_URL). The
+// option passed in as arguments are applied after these default arguments, and all
+// option will be passed down to the services and requests that this client makes.
 func NewClient(opts ...option.RequestOption) (r Client) {
 	opts = append(DefaultClientOptions(), opts...)
 
 	r = Client{Options: opts}
 
-	r.Files = NewFileService(opts...)
-	r.URLs = NewURLService(opts...)
+	r.Extract = NewExtractService(opts...)
 
 	return
 }

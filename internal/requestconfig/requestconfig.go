@@ -18,15 +18,15 @@ import (
 	"strings"
 	"time"
 
-	"github.com/crawler-dot-dev/api-sdk-go/internal"
-	"github.com/crawler-dot-dev/api-sdk-go/internal/apierror"
-	"github.com/crawler-dot-dev/api-sdk-go/internal/apiform"
-	"github.com/crawler-dot-dev/api-sdk-go/internal/apiquery"
+	"github.com/stainless-sdks/api.crawler.dev-sdks-go/internal"
+	"github.com/stainless-sdks/api.crawler.dev-sdks-go/internal/apierror"
+	"github.com/stainless-sdks/api.crawler.dev-sdks-go/internal/apiform"
+	"github.com/stainless-sdks/api.crawler.dev-sdks-go/internal/apiquery"
 )
 
 func getDefaultHeaders() map[string]string {
 	return map[string]string{
-		"User-Agent": fmt.Sprintf("CrawlerDev/Go %s", internal.PackageVersion),
+		"User-Agent": fmt.Sprintf("APICrawlerDevSDKs/Go %s", internal.PackageVersion),
 	}
 }
 

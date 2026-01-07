@@ -1,7 +1,7 @@
 package sentinel
 
 import (
-	"github.com/crawler-dot-dev/api-sdk-go/internal/encoding/json/shims"
+	"github.com/stainless-sdks/api.crawler.dev-sdks-go/internal/encoding/json/shims"
 	"reflect"
 	"sync"
 )

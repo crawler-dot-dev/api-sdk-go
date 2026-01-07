@@ -1,8 +1,8 @@
 package paramutil
 
 import (
-	"github.com/crawler-dot-dev/api-sdk-go/packages/param"
-	"github.com/crawler-dot-dev/api-sdk-go/packages/respjson"
+	"github.com/stainless-sdks/api.crawler.dev-sdks-go/packages/param"
+	"github.com/stainless-sdks/api.crawler.dev-sdks-go/packages/respjson"
 )
 
 func AddrIfPresent[T comparable](v param.Opt[T]) *T {

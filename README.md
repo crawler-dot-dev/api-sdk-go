@@ -1,37 +1,29 @@
-# Crawler Dev Go API Library
+# API Crawler Dev SDKs Go API Library
 
 <!-- x-release-please-start-version -->
 
-<a href="https://pkg.go.dev/github.com/crawler-dot-dev/api-sdk-go"><img src="https://pkg.go.dev/badge/github.com/crawler-dot-dev/api-sdk-go.svg" alt="Go Reference"></a>
+<a href="https://pkg.go.dev/github.com/stainless-sdks/api.crawler.dev-sdks-go"><img src="https://pkg.go.dev/badge/github.com/stainless-sdks/api.crawler.dev-sdks-go.svg" alt="Go Reference"></a>
 
 <!-- x-release-please-end -->
 
-The Crawler Dev Go library provides convenient access to the Crawler Dev REST API
+The API Crawler Dev SDKs Go library provides convenient access to the API Crawler Dev SDKs REST API
 from applications written in Go.
 
 It is generated with [Stainless](https://www.stainless.com/).
 
 ## Installation
 
-<!-- x-release-please-start-version -->
-
 ```go
 import (
-	"github.com/crawler-dot-dev/api-sdk-go" // imported as crawlerdev
+	"github.com/stainless-sdks/api.crawler.dev-sdks-go" // imported as apicrawlerdevsdks
 )
 ```
 
-<!-- x-release-please-end -->
-
 Or to pin the version:
 
-<!-- x-release-please-start-version -->
-
 ```sh
-go get -u 'github.com/crawler-dot-dev/api-sdk-go@v0.3.0'
+go get -u 'github.com/stainless-sdks/api.crawler.dev-sdks-go@v0.0.1'
 ```
-
-<!-- x-release-please-end -->
 
 ## Requirements
 
@@ -50,15 +42,15 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/crawler-dot-dev/api-sdk-go"
-	"github.com/crawler-dot-dev/api-sdk-go/option"
+	"github.com/stainless-sdks/api.crawler.dev-sdks-go"
+	"github.com/stainless-sdks/api.crawler.dev-sdks-go/option"
 )
 
 func main() {
-	client := crawlerdev.NewClient(
-		option.WithAPIKey("My API Key"), // defaults to os.LookupEnv("CRAWLER_DEV_API_KEY")
+	client := apicrawlerdevsdks.NewClient(
+		option.WithAPIKey("My API Key"), // defaults to os.LookupEnv("API_CRAWLER_DEV_SDKS_API_KEY")
 	)
-	response, err := client.Files.ExtractText(context.TODO(), crawlerdev.FileExtractTextParams{
+	response, err := client.Extract.FromFile(context.TODO(), apicrawlerdevsdks.ExtractFromFileParams{
 		File: io.Reader(bytes.NewBuffer([]byte("REPLACE_ME"))),
 	})
 	if err != nil {
@@ -71,13 +63,13 @@ func main() {
 
 ### Request fields
 
-The crawlerdev library uses the [`omitzero`](https://tip.golang.org/doc/go1.24#encodingjsonpkgencodingjson)
+The apicrawlerdevsdks library uses the [`omitzero`](https://tip.golang.org/doc/go1.24#encodingjsonpkgencodingjson)
 semantics from the Go 1.24+ `encoding/json` release for request fields.
 
 Required primitive fields (`int64`, `string`, etc.) feature the tag <code>\`json:"...,required"\`</code>. These
 fields are always serialized, even their zero values.
 
-Optional primitive types are wrapped in a `param.Opt[T]`. These fields can be set with the provided constructors, `crawlerdev.String(string)`, `crawlerdev.Int(int64)`, etc.
+Optional primitive types are wrapped in a `param.Opt[T]`. These fields can be set with the provided constructors, `apicrawlerdevsdks.String(string)`, `apicrawlerdevsdks.Int(int64)`, etc.
 
 Any `param.Opt[T]`, map, slice, struct or string enum uses the
 tag <code>\`json:"...,omitzero"\`</code>. Its zero value is considered omitted.
@@ -85,17 +77,17 @@ tag <code>\`json:"...,omitzero"\`</code>. Its zero value is considered omitted.
 The `param.IsOmitted(any)` function can confirm the presence of any `omitzero` field.
 
 ```go
-p := crawlerdev.ExampleParams{
-	ID:   "id_xxx",                 // required property
-	Name: crawlerdev.String("..."), // optional property
+p := apicrawlerdevsdks.ExampleParams{
+	ID:   "id_xxx",                        // required property
+	Name: apicrawlerdevsdks.String("..."), // optional property
 
-	Point: crawlerdev.Point{
-		X: 0,                 // required field will serialize as 0
-		Y: crawlerdev.Int(1), // optional field will serialize as 1
+	Point: apicrawlerdevsdks.Point{
+		X: 0,                        // required field will serialize as 0
+		Y: apicrawlerdevsdks.Int(1), // optional field will serialize as 1
 		// ... omitted non-required fields will not be serialized
 	},
 
-	Origin: crawlerdev.Origin{}, // the zero value of [Origin] is considered omitted
+	Origin: apicrawlerdevsdks.Origin{}, // the zero value of [Origin] is considered omitted
 }
 ```
 
@@ -124,7 +116,7 @@ p.SetExtraFields(map[string]any{
 })
 
 // Send a number instead of an object
-custom := param.Override[crawlerdev.FooParams](12)
+custom := param.Override[apicrawlerdevsdks.FooParams](12)
 ```
 
 ### Request unions
@@ -265,12 +257,12 @@ This library uses the functional options pattern. Functions defined in the
 requests. For example:
 
 ```go
-client := crawlerdev.NewClient(
+client := apicrawlerdevsdks.NewClient(
 	// Adds a header to every request made by the client
 	option.WithHeader("X-Some-Header", "custom_header_info"),
 )
 
-client.Files.ExtractText(context.TODO(), ...,
+client.Extract.FromFile(context.TODO(), ...,
 	// Override the header
 	option.WithHeader("X-Some-Header", "some_other_custom_header_info"),
 	// Add an undocumented field to the request body, using sjson syntax
@@ -280,7 +272,7 @@ client.Files.ExtractText(context.TODO(), ...,
 
 The request option `option.WithDebugLog(nil)` may be helpful while debugging.
 
-See the [full list of request options](https://pkg.go.dev/github.com/crawler-dot-dev/api-sdk-go/option).
+See the [full list of request options](https://pkg.go.dev/github.com/stainless-sdks/api.crawler.dev-sdks-go/option).
 
 ### Pagination
 
@@ -294,23 +286,23 @@ with additional helper methods like `.GetNextPage()`, e.g.:
 ### Errors
 
 When the API returns a non-success status code, we return an error with type
-`*crawlerdev.Error`. This contains the `StatusCode`, `*http.Request`, and
+`*apicrawlerdevsdks.Error`. This contains the `StatusCode`, `*http.Request`, and
 `*http.Response` values of the request, as well as the JSON of the error body
 (much like other response objects in the SDK).
 
 To handle errors, we recommend that you use the `errors.As` pattern:
 
 ```go
-_, err := client.Files.ExtractText(context.TODO(), crawlerdev.FileExtractTextParams{
+_, err := client.Extract.FromFile(context.TODO(), apicrawlerdevsdks.ExtractFromFileParams{
 	File: io.Reader(bytes.NewBuffer([]byte("REPLACE_ME"))),
 })
 if err != nil {
-	var apierr *crawlerdev.Error
+	var apierr *apicrawlerdevsdks.Error
 	if errors.As(err, &apierr) {
 		println(string(apierr.DumpRequest(true)))  // Prints the serialized HTTP request
 		println(string(apierr.DumpResponse(true))) // Prints the serialized HTTP response
 	}
-	panic(err.Error()) // GET "/v1/files/text": 400 Bad Request { ... }
+	panic(err.Error()) // GET "/v1/extract/file": 400 Bad Request { ... }
 }
 ```
 
@@ -328,9 +320,9 @@ To set a per-retry timeout, use `option.WithRequestTimeout()`.
 // This sets the timeout for the request, including all the retries.
 ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
 defer cancel()
-client.Files.ExtractText(
+client.Extract.FromFile(
 	ctx,
-	crawlerdev.FileExtractTextParams{
+	apicrawlerdevsdks.ExtractFromFileParams{
 		File: io.Reader(bytes.NewBuffer([]byte("REPLACE_ME"))),
 	},
 	// This sets the per-retry timeout
@@ -348,24 +340,24 @@ The file name and content-type can be customized by implementing `Name() string`
 string` on the run-time type of `io.Reader`. Note that `os.File` implements `Name() string`, so a
 file returned by `os.Open` will be sent with the file name on disk.
 
-We also provide a helper `crawlerdev.File(reader io.Reader, filename string, contentType string)`
+We also provide a helper `apicrawlerdevsdks.File(reader io.Reader, filename string, contentType string)`
 which can be used to wrap any `io.Reader` with the appropriate file name and content type.
 
 ```go
 // A file from the file system
 file, err := os.Open("/path/to/file")
-crawlerdev.FileExtractTextParams{
+apicrawlerdevsdks.ExtractFromFileParams{
 	File: file,
 }
 
 // A file from a string
-crawlerdev.FileExtractTextParams{
+apicrawlerdevsdks.ExtractFromFileParams{
 	File: strings.NewReader("my file contents"),
 }
 
 // With a custom filename and contentType
-crawlerdev.FileExtractTextParams{
-	File: crawlerdev.File(strings.NewReader(`{"hello": "foo"}`), "file.go", "application/json"),
+apicrawlerdevsdks.ExtractFromFileParams{
+	File: apicrawlerdevsdks.File(strings.NewReader(`{"hello": "foo"}`), "file.go", "application/json"),
 }
 ```
 
@@ -379,14 +371,14 @@ You can use the `WithMaxRetries` option to configure or disable this:
 
 ```go
 // Configure the default for all requests:
-client := crawlerdev.NewClient(
+client := apicrawlerdevsdks.NewClient(
 	option.WithMaxRetries(0), // default is 2
 )
 
 // Override per-request:
-client.Files.ExtractText(
+client.Extract.FromFile(
 	context.TODO(),
-	crawlerdev.FileExtractTextParams{
+	apicrawlerdevsdks.ExtractFromFileParams{
 		File: io.Reader(bytes.NewBuffer([]byte("REPLACE_ME"))),
 	},
 	option.WithMaxRetries(5),
@@ -401,9 +393,9 @@ you need to examine response headers, status codes, or other details.
 ```go
 // Create a variable to store the HTTP response
 var response *http.Response
-response, err := client.Files.ExtractText(
+response, err := client.Extract.FromFile(
 	context.TODO(),
-	crawlerdev.FileExtractTextParams{
+	apicrawlerdevsdks.ExtractFromFileParams{
 		File: io.Reader(bytes.NewBuffer([]byte("REPLACE_ME"))),
 	},
 	option.WithResponseInto(&response),
@@ -452,7 +444,7 @@ or the `option.WithJSONSet()` methods.
 params := FooNewParams{
     ID:   "id_xxxx",
     Data: FooNewParamsData{
-        FirstName: crawlerdev.String("John"),
+        FirstName: apicrawlerdevsdks.String("John"),
     },
 }
 client.Foo.New(context.Background(), params, option.WithJSONSet("data.last_name", "Doe"))
@@ -487,7 +479,7 @@ func Logger(req *http.Request, next option.MiddlewareNext) (res *http.Response, 
     return res, err
 }
 
-client := crawlerdev.NewClient(
+client := apicrawlerdevsdks.NewClient(
 	option.WithMiddleware(Logger),
 )
 ```
@@ -512,7 +504,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/crawler-dot-dev/api-sdk-go/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/api.crawler.dev-sdks-go/issues) with questions, bugs, or suggestions.
 
 ## Contributing
 

@@ -11,15 +11,15 @@ import (
 	"strings"
 	"time"
 
-	"github.com/crawler-dot-dev/api-sdk-go/internal/requestconfig"
+	"github.com/stainless-sdks/api.crawler.dev-sdks-go/internal/requestconfig"
 	"github.com/tidwall/sjson"
 )
 
-// RequestOption is an option for the requests made by the crawler.dev API Client
+// RequestOption is an option for the requests made by the api.crawler.dev-sdks API Client
 // which can be supplied to clients, services, and methods. You can read more about this functional
 // options pattern in our [README].
 //
-// [README]: https://pkg.go.dev/github.com/crawler-dot-dev/api-sdk-go#readme-requestoptions
+// [README]: https://pkg.go.dev/github.com/stainless-sdks/api.crawler.dev-sdks-go#readme-requestoptions
 type RequestOption = requestconfig.RequestOption
 
 // WithBaseURL returns a RequestOption that sets the BaseURL for the client.

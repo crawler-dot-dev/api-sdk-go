@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-package crawlerdev_test
+package apicrawlerdevsdks_test
 
 import (
 	"bytes"
@@ -9,9 +9,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/crawler-dot-dev/api-sdk-go"
-	"github.com/crawler-dot-dev/api-sdk-go/internal/testutil"
-	"github.com/crawler-dot-dev/api-sdk-go/option"
+	"github.com/stainless-sdks/api.crawler.dev-sdks-go"
+	"github.com/stainless-sdks/api.crawler.dev-sdks-go/internal/testutil"
+	"github.com/stainless-sdks/api.crawler.dev-sdks-go/option"
 )
 
 func TestUsage(t *testing.T) {
@@ -22,11 +22,12 @@ func TestUsage(t *testing.T) {
 	if !testutil.CheckTestServer(t, baseURL) {
 		return
 	}
-	client := crawlerdev.NewClient(
+	client := apicrawlerdevsdks.NewClient(
 		option.WithBaseURL(baseURL),
 		option.WithAPIKey("My API Key"),
 	)
-	response, err := client.Files.ExtractText(context.TODO(), crawlerdev.FileExtractTextParams{
+	t.Skip("Prism tests are disabled")
+	response, err := client.Extract.FromFile(context.TODO(), apicrawlerdevsdks.ExtractFromFileParams{
 		File: io.Reader(bytes.NewBuffer([]byte("REPLACE_ME"))),
 	})
 	if err != nil {

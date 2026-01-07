@@ -1,9 +1,9 @@
-module github.com/crawler-dot-dev/api-sdk-go
+module github.com/stainless-sdks/api.crawler.dev-sdks-go
 
 go 1.22
 
 require (
-	github.com/tidwall/gjson v1.14.4
+	github.com/tidwall/gjson v1.18.0
 	github.com/tidwall/sjson v1.2.5
 )
 
