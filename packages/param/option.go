@@ -3,7 +3,7 @@ package param
 import (
 	"encoding/json"
 	"fmt"
-	shimjson "github.com/stainless-sdks/api.crawler.dev-sdks-go/internal/encoding/json"
+	shimjson "github.com/crawler-dot-dev/api-sdk-go/internal/encoding/json"
 	"time"
 )
 

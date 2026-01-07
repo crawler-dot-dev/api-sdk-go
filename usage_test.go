@@ -9,9 +9,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/stainless-sdks/api.crawler.dev-sdks-go"
-	"github.com/stainless-sdks/api.crawler.dev-sdks-go/internal/testutil"
-	"github.com/stainless-sdks/api.crawler.dev-sdks-go/option"
+	"github.com/crawler-dot-dev/api-sdk-go"
+	"github.com/crawler-dot-dev/api-sdk-go/internal/testutil"
+	"github.com/crawler-dot-dev/api-sdk-go/option"
 )
 
 func TestUsage(t *testing.T) {

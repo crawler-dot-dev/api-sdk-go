@@ -10,12 +10,12 @@ import (
 	"net/http"
 	"slices"
 
-	"github.com/stainless-sdks/api.crawler.dev-sdks-go/internal/apiform"
-	"github.com/stainless-sdks/api.crawler.dev-sdks-go/internal/apijson"
-	"github.com/stainless-sdks/api.crawler.dev-sdks-go/internal/requestconfig"
-	"github.com/stainless-sdks/api.crawler.dev-sdks-go/option"
-	"github.com/stainless-sdks/api.crawler.dev-sdks-go/packages/param"
-	"github.com/stainless-sdks/api.crawler.dev-sdks-go/packages/respjson"
+	"github.com/crawler-dot-dev/api-sdk-go/internal/apiform"
+	"github.com/crawler-dot-dev/api-sdk-go/internal/apijson"
+	"github.com/crawler-dot-dev/api-sdk-go/internal/requestconfig"
+	"github.com/crawler-dot-dev/api-sdk-go/option"
+	"github.com/crawler-dot-dev/api-sdk-go/packages/param"
+	"github.com/crawler-dot-dev/api-sdk-go/packages/respjson"
 )
 
 // ExtractService contains methods and other services that help with interacting

@@ -12,9 +12,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/stainless-sdks/api.crawler.dev-sdks-go"
-	"github.com/stainless-sdks/api.crawler.dev-sdks-go/internal"
-	"github.com/stainless-sdks/api.crawler.dev-sdks-go/option"
+	"github.com/crawler-dot-dev/api-sdk-go"
+	"github.com/crawler-dot-dev/api-sdk-go/internal"
+	"github.com/crawler-dot-dev/api-sdk-go/option"
 )
 
 type closureTransport struct {
