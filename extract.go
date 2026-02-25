@@ -117,7 +117,7 @@ func (r *ExtractFromURLResponse) UnmarshalJSON(data []byte) error {
 
 type ExtractFromFileParams struct {
 	// The file to upload.
-	File io.Reader `json:"file,omitzero,required" format:"binary"`
+	File io.Reader `json:"file,omitzero" api:"required" format:"binary"`
 	// Whether to clean and normalize the extracted text. When enabled (true):
 	//
 	//   - For HTML content: Removes script, style, and other non-text elements before
@@ -193,7 +193,7 @@ func (u *ExtractFromFileParamsMaxTimeoutUnion) asAny() any {
 
 type ExtractFromURLParams struct {
 	// The URL to extract text from.
-	URL string `json:"url,required"`
+	URL string `json:"url" api:"required"`
 	// Whether to clean extracted text
 	CleanText param.Opt[bool] `json:"cleanText,omitzero"`
 	// Maximum number of redirects to follow when fetching the URL. Must be between 0
