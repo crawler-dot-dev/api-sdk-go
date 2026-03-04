@@ -17,6 +17,7 @@ import (
 // client directly, and instead use the [NewClient] method instead.
 type Client struct {
 	Options []option.RequestOption
+	// Endpoints for extracting text from files and URLs
 	Extract ExtractService
 }
 
