@@ -18,6 +18,8 @@ import (
 	"github.com/crawler-dot-dev/api-sdk-go/packages/respjson"
 )
 
+// Endpoints for extracting text from files and URLs
+//
 // ExtractService contains methods and other services that help with interacting
 // with the api.crawler.dev-sdks API.
 //
