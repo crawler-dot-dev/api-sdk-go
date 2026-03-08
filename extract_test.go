@@ -29,7 +29,7 @@ func TestExtractFromFileWithOptionalParams(t *testing.T) {
 		option.WithAPIKey("My API Key"),
 	)
 	_, err := client.Extract.FromFile(context.TODO(), apicrawlerdevsdks.ExtractFromFileParams{
-		File:      io.Reader(bytes.NewBuffer([]byte("some file contents"))),
+		File:      io.Reader(bytes.NewBuffer([]byte("Example data"))),
 		CleanText: apicrawlerdevsdks.Bool(true),
 		Formats:   []string{"text", "markdown"},
 		MaxTimeout: apicrawlerdevsdks.ExtractFromFileParamsMaxTimeoutUnion{
