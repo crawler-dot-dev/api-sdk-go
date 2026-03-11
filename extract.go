@@ -45,7 +45,7 @@ func (r *ExtractService) FromFile(ctx context.Context, body ExtractFromFileParam
 	opts = slices.Concat(r.Options, opts)
 	path := "v1/extract/file"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPost, path, body, &res, opts...)
-	return
+	return res, err
 }
 
 // Extract text content from a webpage or document accessible via URL. Supports
@@ -54,7 +54,7 @@ func (r *ExtractService) FromURL(ctx context.Context, body ExtractFromURLParams,
 	opts = slices.Concat(r.Options, opts)
 	path := "v1/extract/url"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPost, path, body, &res, opts...)
-	return
+	return res, err
 }
 
 type ExtractFromFileResponse struct {
