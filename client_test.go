@@ -40,7 +40,7 @@ func TestUserAgentHeader(t *testing.T) {
 			},
 		}),
 	)
-	client.Extract.FromFile(context.Background(), apicrawlerdevsdks.ExtractFromFileParams{
+	_, _ = client.Extract.FromFile(context.Background(), apicrawlerdevsdks.ExtractFromFileParams{
 		File: io.Reader(bytes.NewBuffer([]byte("REPLACE_ME"))),
 	})
 	if userAgent != fmt.Sprintf("APICrawlerDevSDKs/Go %s", internal.PackageVersion) {
