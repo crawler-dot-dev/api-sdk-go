@@ -16,7 +16,7 @@ import (
 )
 
 func TestExtractFromFileWithOptionalParams(t *testing.T) {
-	t.Skip("Prism tests are disabled")
+	t.Skip("Mock server tests are disabled")
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
 		baseURL = envURL
@@ -29,7 +29,7 @@ func TestExtractFromFileWithOptionalParams(t *testing.T) {
 		option.WithAPIKey("My API Key"),
 	)
 	_, err := client.Extract.FromFile(context.TODO(), apicrawlerdevsdks.ExtractFromFileParams{
-		File:      io.Reader(bytes.NewBuffer([]byte("some file contents"))),
+		File:      io.Reader(bytes.NewBuffer([]byte("Example data"))),
 		CleanText: apicrawlerdevsdks.Bool(true),
 		Formats:   []string{"text", "markdown"},
 		MaxTimeout: apicrawlerdevsdks.ExtractFromFileParamsMaxTimeoutUnion{
@@ -46,7 +46,7 @@ func TestExtractFromFileWithOptionalParams(t *testing.T) {
 }
 
 func TestExtractFromURLWithOptionalParams(t *testing.T) {
-	t.Skip("Prism tests are disabled")
+	t.Skip("Mock server tests are disabled")
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
 		baseURL = envURL

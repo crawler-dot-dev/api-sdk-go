@@ -18,6 +18,8 @@ import (
 	"github.com/crawler-dot-dev/api-sdk-go/packages/respjson"
 )
 
+// Endpoints for extracting text from files and URLs
+//
 // ExtractService contains methods and other services that help with interacting
 // with the api.crawler.dev-sdks API.
 //
@@ -43,7 +45,7 @@ func (r *ExtractService) FromFile(ctx context.Context, body ExtractFromFileParam
 	opts = slices.Concat(r.Options, opts)
 	path := "v1/extract/file"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPost, path, body, &res, opts...)
-	return
+	return res, err
 }
 
 // Extract text content from a webpage or document accessible via URL. Supports
@@ -52,7 +54,7 @@ func (r *ExtractService) FromURL(ctx context.Context, body ExtractFromURLParams,
 	opts = slices.Concat(r.Options, opts)
 	path := "v1/extract/url"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPost, path, body, &res, opts...)
-	return
+	return res, err
 }
 
 type ExtractFromFileResponse struct {
@@ -117,7 +119,7 @@ func (r *ExtractFromURLResponse) UnmarshalJSON(data []byte) error {
 
 type ExtractFromFileParams struct {
 	// The file to upload.
-	File io.Reader `json:"file,omitzero,required" format:"binary"`
+	File io.Reader `json:"file,omitzero" api:"required" format:"binary"`
 	// Whether to clean and normalize the extracted text. When enabled (true):
 	//
 	//   - For HTML content: Removes script, style, and other non-text elements before
@@ -193,7 +195,7 @@ func (u *ExtractFromFileParamsMaxTimeoutUnion) asAny() any {
 
 type ExtractFromURLParams struct {
 	// The URL to extract text from.
-	URL string `json:"url,required"`
+	URL string `json:"url" api:"required"`
 	// Whether to clean extracted text
 	CleanText param.Opt[bool] `json:"cleanText,omitzero"`
 	// Maximum number of redirects to follow when fetching the URL. Must be between 0
